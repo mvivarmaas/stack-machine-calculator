@@ -22,7 +22,6 @@ let eval_tests = [
   (SIN(FLOAT(0.)), 0.); 
 ]
 
-(* TODO: Implement eval. *)
 let rec eval e = match e with
   | FLOAT (n) -> n
   | PLUS (n,m) -> eval (n) +. eval (m)
@@ -41,14 +40,12 @@ let rec eval e = match e with
 ;;
   
 
-(* TODO: Write a good set of tests for to_instr *)
 let to_instr_tests = [
   (PLUS (FLOAT 2.0, FLOAT 2.0), [Float 2.0; Float 2.0; Plus]);
   (SIN (FLOAT 2.0), [Float 2.0; Sin]);
   (FLOAT(2.0), [Float 2.0]);
 ]
 
-(* TODO: Implement to_instr. *)
 let to_instr e = 
   let rec to_instr_aux (e : exp) (acc : instruction list) : instruction list = 
     match e with
@@ -140,13 +137,11 @@ let instr i s =
   
 ;; 
 
-(* TODO: Write a good set of tests for prog *)
 let prog_tests = [
   ([Float 2.2 ; Float 3.3; Plus; Float 5.; Mult], Some 27.5);
   ([Float 1. ; Sin ;], Some (sin 1.));
 ]
 
-(* TODO: Implement prog. *)
 let prog instrs =
   
   let extract_stack (s : stack option) : stack = 
